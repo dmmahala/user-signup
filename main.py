@@ -45,14 +45,15 @@ def welcome():
     if verify == "":
         verify_error = "Please reenter your password"
         good_verify = False
-    if "@" not in email and "." not in email:
-        email_error = "Please enter a valid email"
-        email = ""
-        good_email = False
-    if len(email) < 3 or len(email) > 20:
-        email_error = "Please enter a valid email"
-        email = ""
-        good_email = False
+    if not email == "":
+        if "@" not in email and "." not in email:
+            email_error = "Please enter a valid email"
+            email = ""
+            good_email = False
+        if len(email) < 3 or len(email) > 20:
+            email_error = "Please enter a valid email"
+            email = ""
+            good_email = False
     if good_username and good_password and good_verify and good_email:
         return render_template('welcome.html', username=username)
     else:
